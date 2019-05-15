@@ -33,12 +33,20 @@ class Navigation extends React.Component {
             <Nav navbar>
               <div style={{width: "144.15px"}} className="mx-auto">
                 <NavItem>
-                  <NavLink tag={Link} style={{color: "red"}} to="/result">
+                  <NavLink
+                    tag={Link}
+                    style={{color: "red", fontSize: "2rem"}}
+                    to="/result"
+                  >
                     Nearby
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={Link} style={{color: "blue"}} to="/search">
+                  <NavLink
+                    tag={Link}
+                    style={{color: "blue", fontSize: "2rem"}}
+                    to="/search"
+                  >
                     Search
                   </NavLink>
                 </NavItem>

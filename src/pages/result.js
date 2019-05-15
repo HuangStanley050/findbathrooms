@@ -1,11 +1,11 @@
-import React, {useEffect} from "react";
-import {getLocationStart} from "../store/actions/getData";
-import {connect} from "react-redux";
+import React, { useEffect } from "react";
+import { getLocationStart } from "../store/actions/getData";
+import { connect } from "react-redux";
 
 const Result = props => {
   useEffect(() => {
     props.getLocation();
-  }, []);
+  });
   return <h1>result</h1>;
 };
 
