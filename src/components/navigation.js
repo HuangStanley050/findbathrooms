@@ -1,5 +1,6 @@
 import React from "react";
 import {FaToilet} from "react-icons/fa";
+import {Link} from "react-router-dom";
 import {
   Collapse,
   Navbar,
@@ -24,17 +25,21 @@ class Navigation extends React.Component {
       <div>
         <Navbar style={{backgroundColor: "#4172a3"}} light>
           <NavbarBrand className="mx-auto">
-            <FaToilet style={{fontSize: "2rem", color: "white"}} />
+            <Link to="/">
+              <FaToilet style={{fontSize: "2rem", color: "white"}} />
+            </Link>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse isOpen={!this.state.collapsed} navbar>
             <Nav navbar>
               <div style={{width: "144.15px"}} className="mx-auto">
                 <NavItem>
-                  <NavLink href="/components/">Nearby</NavLink>
+                  <NavLink tag={Link} style={{color: "red"}} to="/result">
+                    Nearby
+                  </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="https://github.com/reactstrap/reactstrap">
+                  <NavLink tag={Link} style={{color: "blue"}} to="/search">
                     Search
                   </NavLink>
                 </NavItem>
