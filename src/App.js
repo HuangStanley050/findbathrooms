@@ -4,7 +4,7 @@ import Landing from "./pages/landing";
 import Error from "./pages/404";
 import Search from "./pages/search";
 import Result from "./pages/result";
-import {Switch, Route} from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 //import "./App.css";
 
 function App() {

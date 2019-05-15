@@ -5,7 +5,6 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink
@@ -24,11 +23,11 @@ class Navigation extends React.Component {
     return (
       <div>
         <Navbar style={{backgroundColor: "#4172a3"}} light>
-          <NavbarBrand className="mx-auto">
+          <div className="mx-auto">
             <Link to="/">
               <FaToilet style={{fontSize: "2rem", color: "white"}} />
             </Link>
-          </NavbarBrand>
+          </div>
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse isOpen={!this.state.collapsed} navbar>
             <Nav navbar>

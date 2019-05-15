@@ -1,16 +1,38 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {BrowserRouter as Router} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import { createStore, applyMiddleware, compose, combineReducers } from "redux";
+import createSagaMiddleware from "redux-saga";
+import { Provider } from "react-redux";
+import dataReducer from "./store/reducers/dataReducer";
+import dataSaga from "./store/sagas/dataSaga";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
 
 import * as serviceWorker from "./serviceWorker";
 
+const composeEnhancers =
+  process.env.NODE_ENV === "development"
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    : null || compose;
+const sagaMiddleware = createSagaMiddleware();
+
+const rootReducer = combineReducers({
+  data: dataReducer
+});
+
+const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(sagaMiddleware))
+);
+sagaMiddleware.run(dataSaga);
 const app = (
-  <Router>
-    <App />
-  </Router>
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>
 );
 
 ReactDOM.render(app, document.getElementById("root"));
