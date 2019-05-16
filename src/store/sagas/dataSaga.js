@@ -1,9 +1,11 @@
-import { takeEvery, put } from "redux-saga/effects";
+import {takeEvery, put} from "redux-saga/effects";
 import * as actionType from "../actions/actionTypes";
 import {
   getLocationSuccess,
   getLocationFail,
-  findBathroomsStart
+  findBathroomsStart,
+  findBathroomsFail,
+  findBathroomsSuccess
 } from "../actions/getData";
 import axios from "axios";
 
@@ -42,9 +44,11 @@ function* bathroomSagaWorker(action) {
         action.payload.lat
       }&lng=${action.payload.long}`
     );
-    console.log(result);
+    //console.log(result);
+    yield put(findBathroomsSuccess(result.data));
   } catch (err) {
     console.log(err);
+    yield put(findBathroomsFail());
   }
 }
 

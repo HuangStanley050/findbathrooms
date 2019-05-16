@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { getLocationStart } from "../store/actions/getData";
-import { connect } from "react-redux";
+import React, {useEffect} from "react";
+import {getLocationStart} from "../store/actions/getData";
+import {connect} from "react-redux";
 import Loader from "../components/loader";
 
 const Result = props => {
@@ -8,7 +8,7 @@ const Result = props => {
     props.getLocation();
     //props.findbathroom();
   }, []);
-  return <h1>result</h1>;
+  return props.loading ? <Loader /> : <h1>Toilets found!!</h1>;
 };
 
 const mapDispatchToProps = dispatch => {
