@@ -12,3 +12,25 @@ export const getLocationSuccess = (long, lat) => {
     payload: {long, lat}
   };
 };
+
+export const getLocationFail = () => {
+  return {
+    type: actionType.GET_CURRENT_LOCATION_FAIL
+  };
+};
+
+export const findBathroomsStart = (long, lat) => {
+  return {
+    type: actionType.GET_BATHROOMS_START,
+    payload: {long, lat}
+  };
+};
+
+export const findBathroomsSuccess = data => {
+  return {
+    type: actionType.GET_BATHROOMS_OK,
+    payload: data
+  };
+};
+
+export const findBathroomsFail = () => ({type: actionType.GET_BATHROOMS_FAIL});
