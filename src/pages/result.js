@@ -2,13 +2,29 @@ import React, {useEffect} from "react";
 import {getLocationStart} from "../store/actions/getData";
 import {connect} from "react-redux";
 import Loader from "../components/loader";
+import {Container, Row, Col} from "reactstrap";
 
 const Result = props => {
   useEffect(() => {
     props.getLocation();
     //props.findbathroom();
   }, []);
-  return props.loading ? <Loader /> : <h1>Toilets found!!</h1>;
+
+  const result = (
+    <section>
+      <Container>
+        <Row>
+          {props.data.map(bathroom => (
+            <Col key={bathroom.id} xs="12">
+              {" "}
+              <h2>{bathroom.name}</h2>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    </section>
+  );
+  return props.loading ? <Loader /> : result;
 };
 
 const mapDispatchToProps = dispatch => {
@@ -20,7 +36,8 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
-    loading: state.data.loading
+    loading: state.data.loading,
+    data: state.data.bathroomsData
   };
 };
 
