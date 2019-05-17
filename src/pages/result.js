@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import {getLocationStart} from "../store/actions/getData";
 import {connect} from "react-redux";
 import Loader from "../components/loader";
-import {FaToiletPaper} from "react-icons/fa";
+//import {FaToiletPaper} from "react-icons/fa";
 import Pagination from "../components/pagination";
 import {
   Container,
@@ -12,9 +12,7 @@ import {
   CardImg,
   CardText,
   CardBody,
-  CardTitle,
   CardHeader,
-  CardSubtitle,
   Button
 } from "reactstrap";
 
@@ -57,6 +55,7 @@ const Result = props => {
 const mapDispatchToProps = dispatch => {
   return {
     getLocation: () => dispatch(getLocationStart())
+
     //findbathroom: () => dispatch(findBathroomsStart(12, 15))
   };
 };

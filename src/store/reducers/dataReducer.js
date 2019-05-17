@@ -2,7 +2,8 @@ import * as actionType from "../actions/actionTypes";
 const initialState = {
   loading: false,
   currentLocation: {LONG: "", LAT: ""},
-  bathroomsData: []
+  bathroomsData: [],
+  currentPage: 1
 };
 
 const reducer = (state = initialState, action) => {

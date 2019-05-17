@@ -34,3 +34,7 @@ export const findBathroomsSuccess = data => {
 };
 
 export const findBathroomsFail = () => ({type: actionType.GET_BATHROOMS_FAIL});
+
+export const nextPage = () => ({type: actionType.NEXT_PAGE});
+export const prevPage = () => ({type: actionType.PREVIOUS_PAGE});
+export const firstPage = () => ({type: actionType.FIRST_PAGE});
