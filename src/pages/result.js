@@ -2,7 +2,21 @@ import React, {useEffect} from "react";
 import {getLocationStart} from "../store/actions/getData";
 import {connect} from "react-redux";
 import Loader from "../components/loader";
-import {Container, Row, Col} from "reactstrap";
+import {FaToiletPaper} from "react-icons/fa";
+import Pagination from "../components/pagination";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  CardHeader,
+  CardSubtitle,
+  Button
+} from "reactstrap";
 
 const Result = props => {
   useEffect(() => {
@@ -11,16 +25,29 @@ const Result = props => {
   }, []);
 
   const result = (
-    <section>
+    <section style={{marginTop: "2rem"}}>
       <Container>
         <Row>
           {props.data.map(bathroom => (
-            <Col key={bathroom.id} xs="12">
+            <Col xs="10" md="7" className="mx-auto" key={bathroom.id}>
               {" "}
-              <h2>{bathroom.name}</h2>
+              <Card className="text-center">
+                <CardHeader>{bathroom.name}</CardHeader>
+                <CardBody>
+                  <CardText>
+                    <span className="text-info">Direction: </span>
+                    {bathroom.directions}
+                  </CardText>
+                  <CardText className="text-danger">
+                    {bathroom.comment}
+                  </CardText>
+                  <Button>Show on Map</Button>
+                </CardBody>
+              </Card>
             </Col>
           ))}
         </Row>
+        <Pagination />
       </Container>
     </section>
   );

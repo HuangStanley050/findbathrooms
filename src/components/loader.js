@@ -1,5 +1,5 @@
 import React from "react";
-import { Spinner } from "reactstrap";
+import {Spinner} from "reactstrap";
 
 const Loader = props => {
   // const alter = {
@@ -11,9 +11,12 @@ const Loader = props => {
   //   //minHeight: "100vh"
   // };
   const loaderStyle = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
+    position: "fixed",
+    top: "0",
+    left: "0",
+    right: "0",
+    bottom: "0",
+    margin: "auto",
     width: "3rem",
     height: "3rem"
   };

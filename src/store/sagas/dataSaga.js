@@ -1,4 +1,4 @@
-import {takeEvery, put} from "redux-saga/effects";
+import { takeEvery, put } from "redux-saga/effects";
 import * as actionType from "../actions/actionTypes";
 import {
   getLocationSuccess,
@@ -46,6 +46,7 @@ function* bathroomSagaWorker(action) {
     );
     //console.log(result);
     yield put(findBathroomsSuccess(result.data));
+    console.log(result.headers);
   } catch (err) {
     console.log(err);
     yield put(findBathroomsFail());
