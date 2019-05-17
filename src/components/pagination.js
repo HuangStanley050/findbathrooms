@@ -1,7 +1,7 @@
 import React from "react";
-import {Pagination, PaginationItem, PaginationLink} from "reactstrap";
-import {nextPage, prevPage, firstPage} from "../store/actions/getData";
-import {connect} from "react-redux";
+import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
+import { changePage } from "../store/actions/getData";
+import { connect } from "react-redux";
 
 const Page = props => {
   const buttonStyle = {
@@ -9,22 +9,25 @@ const Page = props => {
   };
   return (
     <section>
-      <Pagination style={{justifyContent: "center", marginTop: "2.5rem"}}>
+      <Pagination style={{ justifyContent: "center", marginTop: "2.5rem" }}>
         <PaginationItem>
           <PaginationLink
-            onClick={() => props.prev()}
+            onClick={() => props.change("prev")}
             style={buttonStyle}
             previous
           />
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink onClick={() => props.first()} style={buttonStyle}>
+          <PaginationLink
+            onClick={() => props.change("first")}
+            style={buttonStyle}
+          >
             First Page
           </PaginationLink>
         </PaginationItem>
         <PaginationItem>
           <PaginationLink
-            onClick={() => props.next()}
+            onClick={() => props.change("next")}
             style={buttonStyle}
             next
           />
@@ -36,9 +39,7 @@ const Page = props => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    next: () => dispatch(nextPage()),
-    prev: () => dispatch(prevPage()),
-    first: () => dispatch(firstPage())
+    change: direction => dispatch(changePage(direction))
   };
 };
 export default connect(
