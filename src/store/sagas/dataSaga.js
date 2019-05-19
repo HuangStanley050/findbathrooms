@@ -1,4 +1,4 @@
-import {takeEvery, put} from "redux-saga/effects";
+import { takeEvery, put } from "redux-saga/effects";
 import * as actionType from "../actions/actionTypes";
 import {
   getLocationSuccess,
@@ -11,7 +11,7 @@ import axios from "axios";
 
 let latitude;
 let longitude;
-const api_url = `https://www.refugerestrooms.org/api/v1/restrooms/by_location?page=1&per_page=5&offset=0&lat=${latitude}&lng=${longitude}`;
+//const api_url = `https://www.refugerestrooms.org/api/v1/restrooms/by_location?page=1&per_page=5&offset=0&lat=${latitude}&lng=${longitude}`;
 
 const getUserPosition = () => {
   return new Promise(function(resolve, reject) {

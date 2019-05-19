@@ -47,6 +47,6 @@ export const changePage = (direction, page, long, lat) => {
       return { type: actionType.FIRST_PAGE, payload: { long, lat, page } };
   }
 };
-// export const nextPage = () => ({type: actionType.NEXT_PAGE});
-// export const prevPage = () => ({type: actionType.PREVIOUS_PAGE});
-// export const firstPage = () => ({type: actionType.FIRST_PAGE});
+// export const showOnGoogleMap = (long, lat) => {
+//   console.log(long, lat);
+// };
