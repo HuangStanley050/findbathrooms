@@ -31,6 +31,28 @@ const reducer = (state = initialState, action) => {
         loading: false,
         bathroomsData: [...action.payload]
       };
+    case actionType.FIRST_PAGE:
+      return {
+        ...state,
+        loading: true,
+        currentPage: 1
+      };
+    case actionType.NEXT_PAGE:
+      return {
+        ...state,
+        loading: true,
+        currentPage: state.currentPage + 1
+      };
+    case actionType.PREVIOUS_PAGE:
+      let tempPage = (state.currentPage -= 1);
+      if (tempPage < 0) {
+        tempPage = 1;
+      }
+      return {
+        ...state,
+        loading: true,
+        currentPage: tempPage
+      };
     default:
       return state;
   }

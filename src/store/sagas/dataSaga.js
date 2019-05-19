@@ -1,4 +1,4 @@
-import { takeEvery, put } from "redux-saga/effects";
+import {takeEvery, put} from "redux-saga/effects";
 import * as actionType from "../actions/actionTypes";
 import {
   getLocationSuccess,
@@ -40,13 +40,15 @@ function* bathroomSagaWorker(action) {
   //yield console.log(latitude, longitude);
   try {
     let result = yield axios.get(
-      `https://www.refugerestrooms.org/api/v1/restrooms/by_location?page=1&per_page=5&offset=0&lat=${
-        action.payload.lat
-      }&lng=${action.payload.long}`
+      `https://www.refugerestrooms.org/api/v1/restrooms/by_location?page=${
+        action.payload.page
+      }&per_page=5&offset=0&lat=${action.payload.lat}&lng=${
+        action.payload.long
+      }`
     );
     //console.log(result);
     yield put(findBathroomsSuccess(result.data));
-    console.log(result.headers);
+    //console.log(result.headers);
   } catch (err) {
     console.log(err);
     yield put(findBathroomsFail());
@@ -56,4 +58,7 @@ function* bathroomSagaWorker(action) {
 export default function* dataSagaWatcher() {
   yield takeEvery(actionType.GET_CURRENT_LOCATION_START, locationSagaWorker);
   yield takeEvery(actionType.GET_BATHROOMS_START, bathroomSagaWorker);
+  yield takeEvery(actionType.NEXT_PAGE, bathroomSagaWorker);
+  yield takeEvery(actionType.PREVIOUS_PAGE, bathroomSagaWorker);
+  yield takeEvery(actionType.FIRST_PAGE, bathroomSagaWorker);
 }

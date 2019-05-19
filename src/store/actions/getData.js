@@ -9,7 +9,7 @@ export const getLocationStart = () => {
 export const getLocationSuccess = (long, lat) => {
   return {
     type: actionType.GET_CURRENT_LOCATION_OK,
-    payload: {long, lat}
+    payload: { long, lat }
   };
 };
 
@@ -19,10 +19,10 @@ export const getLocationFail = () => {
   };
 };
 
-export const findBathroomsStart = (long, lat) => {
+export const findBathroomsStart = (long, lat, page = 1) => {
   return {
     type: actionType.GET_BATHROOMS_START,
-    payload: {long, lat}
+    payload: { long, lat, page }
   };
 };
 
@@ -33,15 +33,18 @@ export const findBathroomsSuccess = data => {
   };
 };
 
-export const findBathroomsFail = () => ({type: actionType.GET_BATHROOMS_FAIL});
-export const changePage = direction => {
+export const findBathroomsFail = () => ({
+  type: actionType.GET_BATHROOMS_FAIL
+});
+export const changePage = (direction, page, long, lat) => {
+  //console.log(page, long, lat);
   switch (direction) {
     case "next":
-      return {type: actionType.NEXT_PAGE};
+      return { type: actionType.NEXT_PAGE, payload: { long, lat, page } };
     case "prev":
-      return {type: actionType.PREVIOUS_PAGE};
+      return { type: actionType.PREVIOUS_PAGE, payload: { long, lat, page } };
     default:
-      return {type: actionType.FIRST_PAGE};
+      return { type: actionType.FIRST_PAGE, payload: { long, lat, page } };
   }
 };
 // export const nextPage = () => ({type: actionType.NEXT_PAGE});

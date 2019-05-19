@@ -1,9 +1,13 @@
 import React from "react";
-import { Button } from "reactstrap";
+import {Button} from "reactstrap";
 
 const Search = props => {
   return (
-    <Button style={{ fontSize: "4rem" }} color="primary" size="lg">
+    <Button
+      style={{fontSize: "4rem", width: "245px"}}
+      color="primary"
+      size="lg"
+    >
       Search
     </Button>
   );

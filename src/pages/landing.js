@@ -11,18 +11,20 @@ class Landing extends React.Component {
         <Container>
           <Row>
             <Col md="6">
-              <h1 style={{textAlign: "center"}}>
-                <Link to="/result">
-                  <NearBy />
-                </Link>
-              </h1>
+              <Link
+                style={{display: "flex", justifyContent: "center"}}
+                to="/result"
+              >
+                <NearBy />
+              </Link>
             </Col>
             <Col md="6">
-              <h1 style={{textAlign: "center"}}>
-                <Link to="/search">
-                  <Search />
-                </Link>
-              </h1>
+              <Link
+                style={{display: "flex", justifyContent: "center"}}
+                to="/search"
+              >
+                <Search />
+              </Link>
             </Col>
           </Row>
         </Container>
