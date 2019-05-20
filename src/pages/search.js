@@ -1,7 +1,8 @@
 import React from "react";
+import SearchBar from "../components/searchBar.js";
 
 const Search = props => {
-  return <h1>Search page</h1>;
+  return <SearchBar />;
 };
 
 export default Search;
