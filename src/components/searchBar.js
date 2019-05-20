@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import AlgoliaPlaces from "algolia-places-react";
 import {
   InputGroup,
@@ -8,16 +8,6 @@ import {
   Button
 } from "reactstrap";
 
-/*
-<h1 className="text-center text-info mb-3">Search toilets anywhere</h1>
-<InputGroup style={{width: "90%", margin: "0 auto"}}>
-  <Input placeholder="username" />
-  <InputGroupAddon addonType="append">
-    <Button color="primary">Search</Button>
-  </InputGroupAddon>
-</InputGroup>
- */
-
 const SearchBar = props => {
   const algoliaConfig = {
     appId: process.env.REACT_APP_API_ID,
@@ -26,15 +16,22 @@ const SearchBar = props => {
     countries: [],
     type: ""
   };
+  const [latitude, getLat] = useState("");
+  const [longitude, getLong] = useState("");
+
   return (
-    <section style={{marginTop: "30%"}}>
+    <section style={{marginTop: "20%"}}>
+      <h1 className="text-center text-info mb-3">Search toilets anywhere</h1>
       <AlgoliaPlaces
         options={algoliaConfig}
-        onChange={({query, rawAnswer, suggestion, suggestionIndex}) =>
+        onChange={({query, rawAnswer, suggestion, suggestionIndex}) => {
           console.log(
-            "Fired when suggestion selected in the dropdown or hint was validated."
-          )
-        }
+            "Fired when suggestion selected in the dropdown or hint was validated.",
+            suggestion
+          );
+          getLat(suggestion.latlng.lat);
+          getLong(suggestion.latlng.lng);
+        }}
         onSuggestions={({rawAnswer, query, suggestions}) =>
           console.log(
             "Fired when dropdown receives suggestions. You will receive the array of suggestions that are displayed."
@@ -45,7 +42,10 @@ const SearchBar = props => {
             "Fired when arrows keys are used to navigate suggestions."
           )
         }
-        onClear={() => console.log("Fired when the input is cleared.")}
+        onClear={() => {
+          getLat("");
+          getLong("");
+        }}
         onLimit={({message}) =>
           console.log("Fired when you reached your current rate limit.")
         }
@@ -55,6 +55,11 @@ const SearchBar = props => {
           )
         }
       />
+      <div className="text-center mt-4">
+        <Button style={{fontSize: "2.8rem"}} color="primary" size="lg">
+          Find
+        </Button>
+      </div>
     </section>
   );
 };
