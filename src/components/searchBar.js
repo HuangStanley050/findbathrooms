@@ -1,12 +1,8 @@
 import React, {useState} from "react";
 import AlgoliaPlaces from "algolia-places-react";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupText,
-  Input,
-  Button
-} from "reactstrap";
+import {findBathroomsStart} from "../store/actions/getData";
+import {Button} from "reactstrap";
+import {connect} from "react-redux";
 
 const SearchBar = props => {
   const algoliaConfig = {
@@ -18,7 +14,15 @@ const SearchBar = props => {
   };
   const [latitude, getLat] = useState("");
   const [longitude, getLong] = useState("");
-
+  const searchHandler = e => {
+    if (latitude === "" || longitude === "") {
+      alert("Must input location before submission");
+      return;
+    }
+    props.find(longitude, latitude);
+    getLat("");
+    getLong("");
+  };
   return (
     <section style={{marginTop: "20%"}}>
       <h1 className="text-center text-info mb-3">Search toilets anywhere</h1>
@@ -56,7 +60,12 @@ const SearchBar = props => {
         }
       />
       <div className="text-center mt-4">
-        <Button style={{fontSize: "2.8rem"}} color="primary" size="lg">
+        <Button
+          onClick={e => searchHandler()}
+          style={{fontSize: "2.8rem"}}
+          color="primary"
+          size="lg"
+        >
           Find
         </Button>
       </div>
@@ -64,4 +73,13 @@ const SearchBar = props => {
   );
 };
 
-export default SearchBar;
+const mapDispatchToProps = dispatch => {
+  return {
+    find: (long, lat) => dispatch(findBathroomsStart(long, lat))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(SearchBar);

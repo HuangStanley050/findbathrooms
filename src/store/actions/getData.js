@@ -9,7 +9,7 @@ export const getLocationStart = () => {
 export const getLocationSuccess = (long, lat) => {
   return {
     type: actionType.GET_CURRENT_LOCATION_OK,
-    payload: { long, lat }
+    payload: {long, lat}
   };
 };
 
@@ -22,7 +22,7 @@ export const getLocationFail = () => {
 export const findBathroomsStart = (long, lat, page = 1) => {
   return {
     type: actionType.GET_BATHROOMS_START,
-    payload: { long, lat, page }
+    payload: {long, lat, page}
   };
 };
 
@@ -40,13 +40,10 @@ export const changePage = (direction, page, long, lat) => {
   //console.log(page, long, lat);
   switch (direction) {
     case "next":
-      return { type: actionType.NEXT_PAGE, payload: { long, lat, page } };
+      return {type: actionType.NEXT_PAGE, payload: {long, lat, page}};
     case "prev":
-      return { type: actionType.PREVIOUS_PAGE, payload: { long, lat, page } };
+      return {type: actionType.PREVIOUS_PAGE, payload: {long, lat, page}};
     default:
-      return { type: actionType.FIRST_PAGE, payload: { long, lat, page } };
+      return {type: actionType.FIRST_PAGE, payload: {long, lat, page}};
   }
 };
-// export const showOnGoogleMap = (long, lat) => {
-//   console.log(long, lat);
-// };
