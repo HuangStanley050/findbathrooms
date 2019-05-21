@@ -1,5 +1,15 @@
 import * as actionType from "./actionTypes";
 
+export const openMap = (long, lat) => {
+  window.open(
+    `https://www.google.com/maps/search/?api=1&query=${lat},${long}`,
+    "_blank"
+  );
+  //console.log(long, lat);
+};
+
+export const clear = () => ({type: actionType.CLEAR_RESULT});
+
 export const getLocationStart = () => {
   return {
     type: actionType.GET_CURRENT_LOCATION_START

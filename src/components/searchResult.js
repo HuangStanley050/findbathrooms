@@ -1,5 +1,6 @@
 import React from "react";
 import {Table, Button} from "reactstrap";
+import {openMap} from "../store/actions/getData";
 import {connect} from "react-redux";
 
 const SearchResult = props => {
@@ -19,7 +20,11 @@ const SearchResult = props => {
               <th scope="row">{i}</th>
               <td>{bathroom.name}</td>
               <td>
-                <Button>Show on Map</Button>
+                <Button
+                  onClick={e => openMap(bathroom.longitude, bathroom.latitude)}
+                >
+                  Show on Map
+                </Button>
               </td>
             </tr>
           );

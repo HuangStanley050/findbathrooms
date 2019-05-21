@@ -43,6 +43,11 @@ const reducer = (state = initialState, action) => {
         loading: true,
         currentPage: state.currentPage + 1
       };
+    case actionType.CLEAR_RESULT:
+      return {
+        ...state,
+        bathroomsData: []
+      };
     case actionType.PREVIOUS_PAGE:
       let tempPage = (state.currentPage -= 1);
       if (tempPage < 0) {

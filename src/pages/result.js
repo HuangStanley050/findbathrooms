@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { getLocationStart } from "../store/actions/getData";
-import { connect } from "react-redux";
+import React, {useEffect} from "react";
+import {getLocationStart, openMap} from "../store/actions/getData";
+import {connect} from "react-redux";
 import Loader from "../components/loader";
 //import {FaToiletPaper} from "react-icons/fa";
 import Pagination from "../components/pagination";
@@ -22,15 +22,9 @@ const Result = props => {
     //props.findbathroom();
   }, []);
   //let googleMapUrl = "https://www.google.com/maps/search/?api=1&query=47.5951518,-122.3316393";
-  const openMap = (long, lat) => {
-    window.open(
-      `https://www.google.com/maps/search/?api=1&query=${lat},${long}`,
-      "_blank"
-    );
-    //console.log(long, lat);
-  };
+
   const result = (
-    <section style={{ marginTop: "2rem" }}>
+    <section style={{marginTop: "2rem"}}>
       <Container>
         <Row>
           {props.data.map(bathroom => (
